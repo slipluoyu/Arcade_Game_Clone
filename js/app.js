@@ -42,40 +42,25 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 Player.prototype.reset = function() {
-  if (this.y < 50) {
-    console.info('恭喜')
-  } else {
-    console.info('请重来')
-  }
   return this.x = 202, this.y = 383;
 }
+
+const vWidth = 101;
+const vHeight = 83;
+
 Player.prototype.handleInput = function(val) {
   if (val == "left") {
-    this.x = this.x - 101;
-    if (this.x < 80) {
-      this.x = 0
-    }
+    this.x = (this.x < 102)? 0 : (this.x - vWidth);
   }
   if (val == "right") {
-    this.x = this.x + 101;
-    if (this.x > 404) {
-      this.x = 404
-    }
+    this.x = (this.x > 303)? 404 : (this.x + vWidth);
   }
   if (val == "up") {
-    this.y = this.y - 83;
-    if (this.y < 50) {
-      this.reset();
-    }
-
+    this.y = (this.y < 100)? this.reset() : (this.y - vHeight);
   }
   if (val == "down") {
-    this.y = this.y + 83;
-    if (this.y > 400) {
-      this.y = 383;
-    }
+    this.y = (this.y > 290)? 383 : (this.y + vHeight);
   }
-  console.info(val, this.y);
 }
 
 // 现在实例化你的所有对象
@@ -84,12 +69,12 @@ Player.prototype.handleInput = function(val) {
 
 var allEnemies = [];
 setInterval(function() {
-  var enemy = new Enemy(Math.floor(Math.random() * 3), Math.floor(Math.random() * 4 + 1));
+  var enemy = new Enemy(Math.floor(Math.random() * 4), Math.floor(Math.random() * 4 + 1));
   allEnemies.push(enemy);
   if (allEnemies.length > 10) {
-    allEnemies.splice(0, 0)
+    allEnemies.splice(0, 1)
   }
-}, 1000)
+}, 800)
 var player = new Player();
 
 // 这段代码监听游戏玩家的键盘点击事件并且代表将按键的关键数字送到 Player.handleInput()

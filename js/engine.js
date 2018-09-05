@@ -90,7 +90,7 @@ var Engine = (function(global) {
                 'images/stone-block.png',   // 第一行石头
                 'images/stone-block.png',   // 第二行石头
                 'images/stone-block.png',   // 第三行石头
-                'images/grass-block.png',   // 第一行草地
+                'images/stone-block.png',   // 第一行草地
                 'images/grass-block.png'    // 第二行草地
             ],
             numRows = 6,
