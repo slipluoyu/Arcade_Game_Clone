@@ -63,7 +63,10 @@ var Engine = (function(global) {
      * 注释了，你可以在这里实现，也可以在 app.js 对应的角色类里面实现。
      */
     function update(dt) {
-        updateEntities(dt);
+        if (!gamePause) {
+          updateEntities(dt);
+        }
+        // updateEntities(dt);
         // checkCollisions();
     }
 
@@ -90,7 +93,7 @@ var Engine = (function(global) {
                 'images/stone-block.png',   // 第一行石头
                 'images/stone-block.png',   // 第二行石头
                 'images/stone-block.png',   // 第三行石头
-                'images/stone-block.png',   // 第一行草地
+                'images/stone-block.png',   // 第四行石头
                 'images/grass-block.png'    // 第二行草地
             ],
             numRows = 6,
@@ -121,6 +124,7 @@ var Engine = (function(global) {
         });
 
         player.render();
+        // player2.render();
     }
 
     /* 这个函数现在没干任何事，但是这会是一个好地方让你来处理游戏重置的逻辑。可能是一个
@@ -138,8 +142,18 @@ var Engine = (function(global) {
         'images/stone-block.png',
         'images/water-block.png',
         'images/grass-block.png',
+        'images/Rock.png',
+        'images/Key.png',
+        'images/Heart.png',
+        'images/Gem Blue.png',
+        'images/Gem Green.png',
+        'images/Gem Orange.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png'
     ]);
     Resources.onReady(init);
 
